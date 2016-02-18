@@ -29,12 +29,12 @@ public class HomeActivity extends AppCompatActivity {
 
         ListView list = (ListView) findViewById(R.id.Matches);
         MatchListAdapter adapter = new MatchListAdapter(this, matches);
-        adapter.add(new Match(4183, 5));
-        adapter.add(new Match(842, 8));
-        adapter.add(new Match(1717, 12));
-        adapter.add(new Match(1726, 6));
-        adapter.add(new Match(2468, 22));
-        adapter.add(new Match(254, 11));
+        adapter.add(new Match(4183, 5, 1));
+        adapter.add(new Match(842, 8, 1));
+        adapter.add(new Match(1717, 12, 0));
+        adapter.add(new Match(1726, 6, 0));
+        adapter.add(new Match(2468, 22, 0));
+        adapter.add(new Match(254, 11, 1));
 //        ArrayAdapter<Match> adapter = new ArrayAdapter<Match>(this, R.layout.list_item, R.id.listMatchNum);
 //        adapter.add(new Match());
         list.setAdapter(adapter);
@@ -42,7 +42,10 @@ public class HomeActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                if(position >= matches.getAmount()){
+                    Intent intent = new Intent(view.getContext(), NewEntryActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 //

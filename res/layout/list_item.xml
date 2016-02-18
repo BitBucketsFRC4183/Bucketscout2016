@@ -18,7 +18,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/listTeamImage"
-        android:text="hibitch"/>
+        android:text="thing1"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/listTeamNum"
@@ -27,7 +28,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/listTeamImage"
-        android:text="hi"/>
+        android:text="thing2"
+        android:textColor="@android:color/white"/>
 
 
 

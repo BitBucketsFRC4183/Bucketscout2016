@@ -32,7 +32,7 @@ public class NewEntryActivity extends AppCompatActivity {
         super.onStop();
 
         if(Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())){
-//            File f = new File();
+//            File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), );
         }
 
     }

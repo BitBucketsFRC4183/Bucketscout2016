@@ -1,6 +1,7 @@
 package org.bitbuckets.bucketscouts2016.logic;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,12 +58,20 @@ public class MatchListAdapter extends ArrayAdapter<Match> {
             teamNumView.setText("");
             matchNumView.setText("");
             teamImageView.setImageResource(R.mipmap.plus_icon);
+            listItem.setBackgroundColor(0);
 
         } else {
             Match m = matches.getMatch(position);
 
             teamNumView.setText("Match: " + m.getTeamNum());
             matchNumView.setText("Team: " + m.getMatchNum());
+
+            if(m.getTeamColour() > 0){
+                listItem.setBackgroundColor(0xFFF44336);
+            }else{
+                listItem.setBackgroundColor(0xFF2196F3);
+            }
+
 //            teamImageView.setImageResource(R.drawable.tshirt);
         }
 
