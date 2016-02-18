@@ -6,13 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import org.bitbuckets.bucketscouts2016.logic.AllMatches;
 import org.bitbuckets.bucketscouts2016.logic.Match;
 import org.bitbuckets.bucketscouts2016.R;
 import org.bitbuckets.bucketscouts2016.logic.MatchListAdapter;
 
 public class HomeActivity extends AppCompatActivity {
+    AllMatches matches;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +25,26 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        matches = new AllMatches();
+
         ListView list = (ListView) findViewById(R.id.Matches);
-        MatchListAdapter adapter = new MatchListAdapter(this);
+        MatchListAdapter adapter = new MatchListAdapter(this, matches);
         adapter.add(new Match(4183, 5));
         adapter.add(new Match(842, 8));
+        adapter.add(new Match(1717, 12));
+        adapter.add(new Match(1726, 6));
+        adapter.add(new Match(2468, 22));
         adapter.add(new Match(254, 11));
 //        ArrayAdapter<Match> adapter = new ArrayAdapter<Match>(this, R.layout.list_item, R.id.listMatchNum);
 //        adapter.add(new Match());
         list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
 //
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {

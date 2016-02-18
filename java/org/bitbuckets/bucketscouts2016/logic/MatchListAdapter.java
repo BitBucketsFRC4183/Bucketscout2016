@@ -19,22 +19,22 @@ import java.util.ArrayList;
  */
 public class MatchListAdapter extends ArrayAdapter<Match> {
     private LayoutInflater inflater;
-    private ArrayList<Match> matches;
+    private  AllMatches matches;
 
-    public MatchListAdapter(Context context) {
-        super(context, R.layout.list_item);
-        inflater = LayoutInflater.from(context);
-        matches = new ArrayList<Match>();
+    public MatchListAdapter(Context context, AllMatches matcher) {
+        super(context, R.layout.list_item);                         //Calls the constructor of the superclass
+        inflater = LayoutInflater.from(context);                    //Gets the layout inflator for this context because it's easier now than later
+        matches = matcher;                                          //Stores the AllMatches object (pointer) to make life easier
     }
 
     @Override
     public void add(Match m) {
-        matches.add(m);
+        matches.addMatch(m);
     }
 
     @Override
     public int getCount() {
-        return matches.size() + 1;
+        return matches.getAmount() + 1;
     }
 
     @Override
@@ -53,13 +53,13 @@ public class MatchListAdapter extends ArrayAdapter<Match> {
         TextView matchNumView = (TextView) listItem.findViewById(R.id.listMatchNum);
         ImageView teamImageView = (ImageView) listItem.findViewById(R.id.listTeamImage);
 
-        if (position >= matches.size()) {
+        if (position >= matches.getAmount()) {
             teamNumView.setText("");
             matchNumView.setText("");
             teamImageView.setImageResource(R.mipmap.plus_icon);
 
         } else {
-            Match m = matches.get(position);
+            Match m = matches.getMatch(position);
 
             teamNumView.setText("Match: " + m.getTeamNum());
             matchNumView.setText("Team: " + m.getMatchNum());
