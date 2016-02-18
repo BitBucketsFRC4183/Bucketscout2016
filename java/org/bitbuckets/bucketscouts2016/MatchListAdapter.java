@@ -1,7 +1,6 @@
 package org.bitbuckets.bucketscouts2016;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,24 +15,53 @@ import java.util.ArrayList;
  * Created by BitBuckets on 14/02/2016.
  */
 public class MatchListAdapter extends ArrayAdapter<Match> {
-    private final Context context;
+    private LayoutInflater inflater;
     private ArrayList<Match> matches;
 
     public MatchListAdapter(Context context) {
-        super(context, -1);
-        this.context = context;
+        super(context, R.layout.list_item);
+        inflater = LayoutInflater.from(context);
+        matches = new ArrayList<Match>();
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View listItem = inflater.inflate(R.layout.list_item, parent, false);
+    public void add(Match m) {
+        matches.add(m);
+    }
+
+    @Override
+    public int getCount() {
+        return matches.size() + 1;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+//        View listItem = inflater.inflate(R.layout.list_item, parent, false);
+
+        View listItem;
+
+        if (convertView == null) {
+            listItem = inflater.inflate(R.layout.list_item, parent, false);
+        } else {
+            listItem = convertView;
+        }
+
         TextView teamNumView = (TextView) listItem.findViewById(R.id.listTeamNum);
         TextView matchNumView = (TextView) listItem.findViewById(R.id.listMatchNum);
         ImageView teamImageView = (ImageView) listItem.findViewById(R.id.listTeamImage);
 
-        teamNumView.setText("Team");
-        matchNumView.setText("Match");
+        if (position >= matches.size()) {
+            teamNumView.setText("");
+            matchNumView.setText("");
+            teamImageView.setImageResource(R.mipmap.plus_icon);
+
+        } else {
+            Match m = matches.get(position);
+
+            teamNumView.setText("Match: " + m.getTeamNum());
+            matchNumView.setText("Team: " + m.getMatchNum());
+//            teamImageView.setImageResource(R.drawable.tshirt);
+        }
 
         return listItem;
     }
