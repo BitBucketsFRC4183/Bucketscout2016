@@ -1,4 +1,4 @@
-package org.bitbuckets.bucketscouts2016;
+package org.bitbuckets.bucketscouts2016.logic;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.bitbuckets.bucketscouts2016.logic.Match;
+import org.bitbuckets.bucketscouts2016.R;
 
 import java.util.ArrayList;
 

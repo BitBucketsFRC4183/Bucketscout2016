@@ -1,4 +1,4 @@
-package org.bitbuckets.bucketscouts2016;
+package org.bitbuckets.bucketscouts2016.activity;
 
 import android.os.Bundle;
 import android.os.Environment;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import org.bitbuckets.bucketscouts2016.R;
 
 import java.io.File;
 

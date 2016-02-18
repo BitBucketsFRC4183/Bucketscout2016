@@ -1,4 +1,4 @@
-package org.bitbuckets.bucketscouts2016;
+package org.bitbuckets.bucketscouts2016.logic;
 
 /**
  * The type that stores all the data for a scouting run.

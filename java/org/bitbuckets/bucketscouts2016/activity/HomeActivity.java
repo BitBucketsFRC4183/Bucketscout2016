@@ -1,11 +1,16 @@
-package org.bitbuckets.bucketscouts2016;
+package org.bitbuckets.bucketscouts2016.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+
+import org.bitbuckets.bucketscouts2016.logic.Match;
+import org.bitbuckets.bucketscouts2016.R;
+import org.bitbuckets.bucketscouts2016.logic.MatchListAdapter;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -15,8 +20,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
         ListView list = (ListView) findViewById(R.id.Matches);
         MatchListAdapter adapter = new MatchListAdapter(this);
@@ -53,6 +56,8 @@ public class HomeActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 
