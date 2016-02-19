@@ -7,21 +7,14 @@ import java.util.ArrayList;
  */
 public class AllMatches {
     /** Arraylist that stores all the matches */
-    private ArrayList<Match> matches;
-
-    /**
-     * Constructor. Sets up the arraylist of all the matches.
-     */
-    public AllMatches() {
-        matches = new ArrayList<>();
-    }
+    private static ArrayList<Match> matches = new ArrayList<>();
 
     /**
      * Gets the amount of matches stored.
      *
      * @return The amount of matches in the ArrayList
      */
-    public int getAmount(){
+    public static int getAmount(){
         return matches.size();
     }
 
@@ -30,7 +23,7 @@ public class AllMatches {
      *
      * @param match The match to add to the list
      */
-    public void addMatch(Match match) {
+    public static void addMatch(Match match) {
         matches.add(match);
     }
 
@@ -40,7 +33,11 @@ public class AllMatches {
      * @param position The index to get a match from.
      * @return The match at the specified index.
      */
-    public Match getMatch(int position) {
+    public static Match getMatch(int position) {
         return matches.get(position);
+    }
+
+    public static String getFileName(int position){
+        return ("match" + matches.get(position).getMatchNum() + "_team" + matches.get(position).getTeamNum() + ".csv");
     }
 }

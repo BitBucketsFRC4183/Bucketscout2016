@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         matches = new AllMatches();
 
         ListView list = (ListView) findViewById(R.id.Matches);
-        MatchListAdapter adapter = new MatchListAdapter(this, matches);
+        MatchListAdapter adapter = new MatchListAdapter(this);
         adapter.add(new Match(4183, 5, 1));
         adapter.add(new Match(842, 8, 1));
         adapter.add(new Match(1717, 12, 0));

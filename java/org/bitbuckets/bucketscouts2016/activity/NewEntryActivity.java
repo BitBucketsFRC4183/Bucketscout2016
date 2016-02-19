@@ -6,8 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Switch;
 
 import org.bitbuckets.bucketscouts2016.R;
+import org.bitbuckets.bucketscouts2016.logic.AllMatches;
+import org.bitbuckets.bucketscouts2016.logic.Match;
 
 import java.io.File;
 
@@ -24,15 +28,20 @@ public class NewEntryActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        if(Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())){
-//            File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), );
+        EditText teamNumField = (EditText) findViewById(R.id.teamNumField);
+        EditText matchNumField = (EditText) findViewById(R.id.matchNumField);
+        Switch teamColor = (Switch) findViewById(R.id.colorSwitch);
+
+        AllMatches.addMatch(new Match(Integer.parseInt(teamNumField.getText().toString()), Integer.parseInt(matchNumField.getText().toString()), teamColor.isChecked() ? 0 : 1));
+
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), AllMatches.getFileName(AllMatches.getAmount()-1));
         }
 
     }
